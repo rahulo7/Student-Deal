@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - StudentDeals</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px 20px; margin: 10px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>StudentDeals - Functionality Test</h1>
+    
+    <div class="test-section">
+        <h3>Test 1: Basic JavaScript</h3>
+        <button onclick="testBasicJS()">Test JavaScript</button>
+        <div id="js-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test 2: Product Search</h3>
+        <input type="text" id="searchTest" placeholder="Enter: asian white sneakers" style="padding: 8px; margin: 5px;">
+        <button onclick="testSearch()">Test Search</button>
+        <div id="search-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test 3: CSS Loading</h3>
+        <button onclick="testCSS()">Test CSS</button>
+        <div id="css-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test 4: Open Main Website</h3>
+        <button onclick="openMainSite()">Open StudentDeals</button>
+    </div>
+
+    <script>
+        function testBasicJS() {
+            document.getElementById('js-result').innerHTML = 
+                '✅ JavaScript is working! Current time: ' + new Date().toLocaleTimeString();
+        }
+        
+        function testSearch() {
+            const searchTerm = document.getElementById('searchTest').value.toLowerCase();
+            const mockProducts = {
+                'asian white sneakers': [
+                    { name: 'Asian White Sports Sneakers', price: 1299, site: 'Flipkart' },
+                    { name: 'Asian White Canvas Shoes', price: 999, site: 'Amazon' }
+                ]
+            };
+            
+            let result = '❌ No results found';
+            if (mockProducts[searchTerm]) {
+                result = '✅ Found ' + mockProducts[searchTerm].length + ' products:<br>';
+                mockProducts[searchTerm].forEach(product => {
+                    result += `- ${product.name} (${product.site}) - ₹${product.price}<br>`;
+                });
+            }
+            
+            document.getElementById('search-result').innerHTML = result;
+        }
+        
+        function testCSS() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'styles.css';
+            link.onload = function() {
+                document.getElementById('css-result').innerHTML = '✅ CSS loaded successfully!';
+            };
+            link.onerror = function() {
+                document.getElementById('css-result').innerHTML = '❌ CSS failed to load';
+            };
+            document.head.appendChild(link);
+        }
+        
+        function openMainSite() {
+            window.open('index.html', '_blank');
+        }
+        
+        // Auto-run basic test
+        window.onload = function() {
+            testBasicJS();
+        };
+    </script>
+</body>
+</html>

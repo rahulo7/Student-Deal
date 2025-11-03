@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentDeals - Find Best Offers Across E-commerce Sites</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-graduation-cap"></i> StudentDeals</h1>
+                <p>Find the best offers across multiple e-commerce sites</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="search-section">
+                <div class="search-container">
+                    <h2>Search for Products</h2>
+                    <form class="search-form" id="searchForm">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" placeholder="What are you looking for? (e.g., white sneakers)" required>
+                            <button type="submit" class="search-btn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+                        
+                        <div class="budget-container">
+                            <label for="budgetRange">Budget Range (₹):</label>
+                            <div class="budget-inputs">
+                                <input type="number" id="minBudget" placeholder="Min" min="0">
+                                <span>to</span>
+                                <input type="number" id="maxBudget" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-header">
+                    <h3 id="resultsTitle">Search Results</h3>
+                    <div class="results-count">
+                        <span id="resultsCount">0</span> products found
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="sortBy">
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating: High to Low</option>
+                        <option value="site">Site</option>
+                    </select>
+                </div>
+
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </section>
+
+            <section class="loading" id="loadingSection" style="display: none;">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Searching across multiple e-commerce sites...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 StudentDeals. Helping students find the best deals!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
